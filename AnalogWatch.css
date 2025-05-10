@@ -1,0 +1,100 @@
+body {
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+@property --angle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+
+.main-outer-div {
+    width: 320px;
+    height: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: conic-gradient(from var(--angle), red, transparent, transparent, #ff0000, transparent, transparent, red);
+    animation: animate 2s linear infinite;
+    border-radius: 50%;
+
+
+    z-index: 0;
+}
+
+@keyframes animate {
+    0% {
+        --angle: 0deg;
+    }
+
+    100% {
+        --angle: 360deg;
+    }
+}
+
+.middle-div {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    position: relative;
+}
+
+.inner-div {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -1px;
+    left: 0;
+    background-image: url(t.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    
+}
+
+.clock {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin-top: 11px;
+    margin-left: 41px;
+    z-index: 1;
+    rotate: 270deg;
+}
+
+.hand {
+    position: absolute;
+    background-color: #000;
+    border-radius: 25px;
+    transform-origin: bottom center;
+}
+
+.hour {
+    width: 6px;
+    height: 60px;
+    top: 50px;
+    left: calc(50% - 3px);
+}
+
+.minute {
+    width: 4px;
+    height: 80px;
+    top: 30px;
+    left: calc(50% - 2px);
+}
+
+.second {
+    width: 2px;
+    height: 90px;
+    top: 20px;
+    left: calc(50% - 1px);
+}

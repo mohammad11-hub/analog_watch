@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog Watch</title>
+    <link rel="stylesheet" href="AnalogWatch.css">
+</head>
+
+<body>
+    <div class="main-outer-div">
+        <div class="middle-div">
+            <div class="inner-div">
+                <div class="clock" id="clock">
+                    <div class="hand hour" id="hour"></div>
+                    <div class="hand minute" id="minute"></div>
+                    <div class="hand second" id="second"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function updateClock() {
+            const now = new Date();
+
+            // Calculate rotation angles for each hand
+            const seconds = now.getSeconds();
+            const minutes = now.getMinutes();
+            const hours = now.getHours();
+
+            const secondDeg = (seconds / 60) * 360 + 90; // Seconds hand
+            const minuteDeg = (minutes / 60) * 360 + (seconds / 60) * 6 + 90; // Minutes hand
+            const hourDeg = (hours % 12 / 12) * 360 + (minutes / 60) * 30 + 90; // Hours hand
+
+            // Apply rotation to clock hands
+            document.getElementById('second').style.transform = `rotate(${secondDeg}deg)`;
+            document.getElementById('minute').style.transform = `rotate(${minuteDeg}deg)`;
+            document.getElementById('hour').style.transform = `rotate(${hourDeg}deg)`;
+        }
+
+        // Update the clock every second
+        setInterval( updateClock, 1000);
+
+        // Initial call to set the clock immediately
+        updateClock();
+    </script>
+</body>
+
+</html>
